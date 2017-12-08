@@ -1,0 +1,122 @@
+spring:
+  # 强制使用Cglib代理
+  aop:
+    proxy-target-class: true
+    auto: true
+
+  # 數據源的配置
+  datasource:
+    druid:
+      # 配置Druid和Spring关联监控
+      aop-patterns: com.honglu.headline.rule.config.service..*.*(..)
+
+      # JDBC配置
+      url: jdbc:mysql://101.132.91.86:3306/headline_user?useUnicode=true&characterEncoding=utf8&autoReconnect=true
+      username: headline
+      password: m3t7cL0Te0YS873+FfxkzgtGewqTWQlOBIg6AhmNljb9u9PlSLIQ4ROnNYtEI9J93LQr1MhVcdcjmN1O31V0Gw==
+      driver-class-name: com.mysql.jdbc.Driver
+      decrypt.publicKey: MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAKvg27/0uh8x0NnMsBV4TnTRDxbT/S2qJd8FZofLbvJTmkvsT2hMPJObELTbSrhEwOAntNucKzgWkEUgPEzXjEMCAwEAAQ==
+
+      # 连接池配置
+      # 配置连接池初始化大小、最小、最大
+      initialSize: 10
+      minIdle: 10
+      maxActive: 50
+      # 配置获取连接等待超时的时间
+      maxWait: 60000
+      # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+      timeBetweenEvictionRunsMillis: 60000
+      # 配置一个连接在池中最小生存的时间，单位是毫秒
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: SELECT 'x'
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      # 关闭PSCache，并且指定每个连接上PSCache的大小，mysql可以配置为false
+      poolPreparedStatements: false
+      # 配置监控统计拦截的filters
+      filters: wall,stat,log4j,config,mergeStat
+      # 合并多个DruidDataSource的监控数据
+      useGlobalDataSourceStat: true
+      # 配置数据库密码加密
+      connectionProperties: config.decrypt=true;config.decrypt.key=${spring.datasource.druid.decrypt.publicKey};
+          - druid.stat.logSlowSql=true;druid.stat.slowSqlMillis=2000
+
+      # 開啓Druid内置监控功能
+      StatViewServlet:
+        # 开启监控统计功能
+        enabled: true
+        # 监控后台匹配的路径
+        urlPattern: /druid/
+        # 是否能够重置数据,false的话页面不是显示reset按钮
+        resetEnable: false
+        # 登录监控后台的用户名和密码
+        loginUsername: admin
+        loginPassword: 123456
+        # IP白名单 如果allow没有配置或者为空，则允许所有访问
+        allow: 192.168.87.1/254
+        # IP黑名单 deny优先于allow，如果在deny列表中，就算在allow列表中，也会被拒绝。
+        deny: 192.168.12.1/64
+
+      # 開啓Druid與Web关联监控
+      WebStatFilter:
+        enabled: true
+        # 攔截路徑
+        urlPattern: /*
+        # 排除不必要的url
+        exclusions: -*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*
+        sessionStatMaxCount: 1000
+        # 開啓session统计功能
+        sessionStatEnable: true
+        #principalSessionName: druidSession
+        #principalCookieName: druidCookie
+        # 配置profileEnable能够监控单个url调用的sql列表
+        profileEnable: true
+
+  # Redis settings
+  redis:
+    host: 101.132.91.86
+    port: 6379
+    password: fzcfQwuMH2q
+    timeout: 3000
+    database: 2
+    # pool config
+    pool:
+      min-idle: 5
+      max-idle: 10
+      max-active: 10
+      max-wait: 3000
+
+  rabbitmq:
+    host: 101.132.91.86
+    port: 5672
+    connection-timeout: 5000
+    username: headline
+    password: QwuMH2q
+    virtualHost: /headline-host
+
+  data:
+    mongodb:
+      uri: mongodb://headline:fzcfQwuMH2q@101.132.91.86:27017/headline?databases=user&connectTimeout=10000&connectionMode=direct&readPreference=secondaryPreferred&socketTimeout=10000&maxConns=20000
+
+  dubbo:
+    scan: com.honglu.headline.rule.config.business
+    application:
+      name: headline-user-provider
+    registry:
+      address: zookeeper://101.132.91.86:2181
+    protocol:
+      name: dubbo
+      port: 20892
+
+  page:
+     stmt-id-regex: '*\.*ByPage'
+     dialect: mysql
+
+
+mybatis:
+    type-aliases-package: com.honglu.headline.rule.config.entity
+    mapper-locations: classpath:/mapper/*/*.xml
+
+
+
