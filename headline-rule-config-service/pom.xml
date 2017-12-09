@@ -61,52 +61,7 @@
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>com.baidu.disconf</groupId>
-            <artifactId>disconf-client</artifactId>
-            <version>2.6.36.2</version>
-        </dependency>
-
     </dependencies>
-
-    <properties>
-        <disconf.app>microservices_ruleConfig</disconf.app>
-    </properties>
-
-    <profiles>
-        <profile>
-            <id>dev</id>
-            <properties>
-                <profileActive>dev</profileActive>
-                <disconf.env>rd</disconf.env>
-                <disconf.debug>true</disconf.debug>
-                <disconf.remote.enable>false</disconf.remote.enable>
-            </properties>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-        </profile>
-
-        <profile>
-            <id>test</id>
-            <properties>
-                <profileActive>test</profileActive>
-                <disconf.env>qa</disconf.env>
-                <disconf.debug>false</disconf.debug>
-                <disconf.remote.enable>true</disconf.remote.enable>
-            </properties>
-        </profile>
-
-        <profile>
-            <id>prod</id>
-            <properties>
-                <profileActive>prod</profileActive>
-                <disconf.env>online</disconf.env>
-                <disconf.debug>false</disconf.debug>
-                <disconf.remote.enable>true</disconf.remote.enable>
-            </properties>
-        </profile>
-    </profiles>
 
     <build>
         <finalName>rule-config</finalName>
