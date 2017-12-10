@@ -16,7 +16,7 @@ import java.util.Objects;
 public enum RuleConfigBusinessCodeEnum implements IEnum<String> {
 
     // 示例，后期需要删除
-    SUCCESS("0000", "成功");
+    SUCCESS("RC0000", "成功");
     private String value;
     private String desc;
 
