@@ -1,4 +1,4 @@
-package com.honglu.headline.rule.config;
+package com.honglu.headline.rule.config.core;
 
 import com.honglu.headline.common.core.redis.RedisRepository;
 import org.apache.logging.log4j.LogManager;

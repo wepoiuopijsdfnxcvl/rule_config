@@ -8,7 +8,7 @@ spring:
   datasource:
     druid:
       # 配置Druid和Spring关联监控
-      aop-patterns: com.honglu.headline.rule.config.service..*.*(..)
+      aop-patterns: com.honglu.headline.rule.config.core.service..*.*(..)
 
       # JDBC配置
       url: jdbc:mysql://101.132.91.86:3306/headline_user?useUnicode=true&characterEncoding=utf8&autoReconnect=true
@@ -100,7 +100,7 @@ spring:
       uri: mongodb://headline:fzcfQwuMH2q@101.132.91.86:27017/headline?databases=user&connectTimeout=10000&connectionMode=direct&readPreference=secondaryPreferred&socketTimeout=10000&maxConns=20000
 
   dubbo:
-    scan: com.honglu.headline.rule.config.business
+    scan: com.honglu.headline.rule.config.core.business
     application:
       name: headline-rule-config-provider
     registry:
@@ -115,7 +115,7 @@ spring:
 
 
 mybatis:
-    type-aliases-package: com.honglu.headline.rule.config.entity
+    type-aliases-package: com.honglu.headline.rule.config.core.entity
     mapper-locations: classpath:/mapper/*/*.xml
 
 

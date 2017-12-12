@@ -1,4 +1,4 @@
-package com.honglu.headline.rule.config.business;
+package com.honglu.headline.rule.config.core.business;
 
 import com.honglu.headline.rule.config.facade.business.RuleConfigDubboBusiness;
 
