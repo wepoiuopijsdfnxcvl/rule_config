@@ -110,8 +110,9 @@ spring:
       port: 20892
 
   page:
-     stmt-id-regex: '*\.*ByPage'
-     dialect: mysql
+    enabled: true
+    stmt-id-regex: '*\.*ByPage'
+    dialect: mysql
 
 
 mybatis:
