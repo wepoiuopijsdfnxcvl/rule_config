@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.honglu.headline.rule.config.core.mapper.BuVideoPkActivityDao">
+
+	<!--查询翻倍红包-->
+	<select id="queryAllAvlidRead" resultType="com.honglu.headline.rule.config.facade.domain.BuVideoPkActivity" parameterType="map">
+
+
+    SELECT
+		video_pk_id as videoPkId, video_one_id as videoOneId, video_one_url as videoOneUrl, video_two_id as videoTwoId, video_two_url as videoTwoUrl, begin_time as beginTime,
+		end_time as endTime, state, create_time as createTime, create_man as createMan, modify_time as modifyTime, modify_man as modifyMan, remark
+    FROM `bu_video_pk_activity` WHERE end_Time &lt; NOW() and state=1
+
+  </select>
+
+
+</mapper>

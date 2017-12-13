@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.honglu.headline.rule.config.core.mapper.RedPacketDao">
+
+	<!--查询翻倍红包-->
+	<select id="queryAllRedPackage" resultType="com.honglu.headline.rule.config.facade.domain.RedPackage" parameterType="map">
+
+
+    SELECT
+		id, red_package_code as redPackageCode, red_package_name as redPackageName, red_package_desc as redPackageDesc, red_package_num as redPackageNum, type,
+		red_activity_type as redActivityType, red_package_count as redPackageCount, red_package_rule as redPackageRule, state, create_time as createTime, create_user as createUser,
+		create_user_name as createUserName, modify_time as modifyTime, modify_user_name as modifyUserName, modify_user as modifyUser
+      from sc_red_package
+
+
+	</select>
+
+
+</mapper>

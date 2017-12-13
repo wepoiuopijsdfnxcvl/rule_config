@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.honglu.headline.rule.config.core.mapper.AvlidReadRuleDao">
+
+	<!--查询翻倍红包-->
+	<select id="queryAllAvlidRead" resultType="com.honglu.headline.rule.config.facade.domain.AvlidRead" parameterType="map">
+
+
+    SELECT
+ sar.id, sar.read_name AS readName, sar.read_type AS readType, sar.read_gold AS readGold, sar.state, sar.version, sar.create_time AS createTime, sar.create_user AS createUser, sar.create_user_name AS createUserName,
+    sar.modify_time AS modifyTime, sar.modify_user_name AS modifyUserName, sar.modify_user AS modifyUser,
+
+     sarrd.id AS detailId, sarrd.avlid_read_id AS avlidReadId, sarrd.read_rule_name AS readRuleName, sarrd.read_rule_code AS readRuleCode, sarrd.read_time AS readTime, sarrd.state AS sonState, sarrd.version AS sonVersion, sarrd.create_time AS createTime,
+    sarrd.create_user, sarrd.create_user_name, sarrd.modify_time, sarrd.modify_user_name, sarrd.modify_user
+    FROM `sc_avlid_read` sar
+    LEFT JOIN `sc_avlid_read_rule_detail` sarrd  ON sar.`id` = sarrd.`avlid_read_id`
+		<where>
+			<if test="state!=null and state!=''">
+                AND sar.state=#{state}
+			</if>
+			<if test="sonState!=null and sonState!=''">
+				AND sarrd.state=#{sonState}
+			</if>
+
+		</where>
+
+
+	</select>
+
+
+</mapper>

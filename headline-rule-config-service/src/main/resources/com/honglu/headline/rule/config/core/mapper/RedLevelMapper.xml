@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.honglu.headline.rule.config.core.mapper.RedLevelDao">
+
+	<!--查询翻倍红包-->
+	<select id="queryAllRedLevel" resultType="com.honglu.headline.rule.config.facade.domain.RedLevel" parameterType="map">
+		SELECT
+		id , level_name as levelName, level_multiple as levelMultiple, level_percent as levelPercent, version, create_time as createTime, create_user as createUser,
+    create_user_name as createUserName, modifyTime, modify_user as modifyUser, modify_user_name as modifyUserName
+		FROM sc_red_level
+	</select>
+
+
+</mapper>
