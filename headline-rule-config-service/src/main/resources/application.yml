@@ -11,7 +11,7 @@ spring:
       aop-patterns: com.honglu.headline.rule.config.core.service..*.*(..)
 
       # JDBC配置
-      url: jdbc:mysql://101.132.91.86:3306/headline_user?useUnicode=true&characterEncoding=utf8&autoReconnect=true
+      url: jdbc:mysql://101.132.91.86:3306/headline_web?useUnicode=true&characterEncoding=utf8&autoReconnect=true
       username: headline
       password: m3t7cL0Te0YS873+FfxkzgtGewqTWQlOBIg6AhmNljb9u9PlSLIQ4ROnNYtEI9J93LQr1MhVcdcjmN1O31V0Gw==
       driver-class-name: com.mysql.jdbc.Driver
@@ -117,7 +117,7 @@ spring:
 
 mybatis:
     type-aliases-package: com.honglu.headline.rule.config.core.entity
-    mapper-locations: classpath:/mapper/*/*.xml
+    mapper-locations: classpath:/com/honglu/headline/rule/config/core/mapper/*.xml
 
 
 

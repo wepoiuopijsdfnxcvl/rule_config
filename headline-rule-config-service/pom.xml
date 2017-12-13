@@ -92,6 +92,14 @@
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
 
+        <!--xml自动生成代码的插件-->
+        <dependency>
+            <groupId>org.mybatis.generator</groupId>
+            <artifactId>mybatis-generator-core</artifactId>
+            <version>1.3.5</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
     <build>

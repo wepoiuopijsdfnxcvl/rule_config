@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.honglu.headline.rule.config.core.mapper.BusinessParamDao">
+
+	<resultMap type="com.honglu.headline.rule.config.facade.domain.BusinessParam" id="sysParaminfoMap">
+		<id property="sysParamId" column="sys_param_id" javaType="java.lang.Integer"></id>
+		<result property="paramValue" column="param_value" javaType="java.lang.String"></result>
+		<result property="paramName" column="param_name" javaType="java.lang.String"></result>
+		<result property="paramValueOne" column="param_value_one" javaType="java.lang.String"></result>
+		<result property="paramNameOne" column="param_name_one" javaType="java.lang.String"></result>
+		<result property="paramValueTwo" column="param_value_two" javaType="java.lang.String"></result>
+		<result property="paramNameTwo" column="param_name_two" javaType="java.lang.String"></result>
+		<result property="paramValueThree" column="param_value_three" javaType="java.lang.String"></result>
+		<result property="paramNameThree" column="param_name_three" javaType="java.lang.String"></result>
+		<result property="paramValueFour" column="param_value_four" javaType="java.lang.String"></result>
+		<result property="paramNameFour" column="param_name_four" javaType="java.lang.String"></result>
+		<result property="paramValueFive" column="param_value_five" javaType="java.lang.String"></result>
+		<result property="paramNameFive" column="param_name_five" javaType="java.lang.String"></result>
+		<result property="statue" column="statue" javaType="java.lang.String"></result>
+		<result property="createTime" column="create_time" javaType="java.lang.String"></result>
+		<result property="createMan" column="create_man" javaType="java.lang.String"></result>
+		<result property="modifyMan" column="modify_man" javaType="java.lang.String"></result>
+		<result property="modifyTime" column="modify_time" javaType="java.lang.String"></result>
+		<result property="version" column="version" javaType="java.lang.Integer"></result>
+		<result property="remark" column="remark" javaType="java.lang.String"></result>
+		<result property="business_param_id" column="business_param_id" javaType="java.lang.Integer"></result>
+	</resultMap>
+
+	<!-- 通用查询结果列-->
+	<sql id="Base_Column_List">
+		business_param_id,	param_value,	param_name,	param_value_one,	param_name_one,	param_value_two,
+		param_name_two,	param_value_three,	param_name_three,	param_value_four,	param_name_four,	param_value_five,	param_name_five,
+		statue,	create_time,	create_man,	modify_man,	modify_time,	version,	remark
+	</sql>
+
+	<!-- 查询（根据主键ID查询） -->
+	<select id="selectByPrimaryKey" resultMap="sysParaminfoMap" parameterType="java.lang.Integer">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM business_param
+		WHERE business_param_id = #{sysParamId}
+	</select>
+
+	<select id="queryByParamValue" resultMap="sysParaminfoMap" parameterType="java.lang.String">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM business_param
+		WHERE param_value = #{paramValue}
+	</select>
+
+	<select id="queryByParamValueAndStatue" resultMap="sysParaminfoMap" parameterType="java.lang.String">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM business_param
+		WHERE param_value = #{paramValue}
+		and statue='01'
+	</select>
+
+	<!-- 查询 -->
+	<select id="getAll" resultMap="sysParaminfoMap" parameterType="com.honglu.headline.rule.config.facade.domain.BusinessParam">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM business_param
+		<where>
+			<!-- 参数编号  -->
+			<if test="paramValue != null and paramValue != '' ">
+				instr(param_value, #{paramValue}) > 0
+			</if>
+			<!--  参数名称 -->
+			<if test="paramName != null and paramName != '' ">
+				and instr(param_name, #{paramName}) > 0
+			</if>
+			<if test="statue != null and statue != '' ">
+				and statue = #{statue}
+			</if>
+		</where>
+		order by create_time DESC
+		LIMIT #{pageIndex},#{pageSize}
+
+	</select>
+
+	<select id="listAllCount" resultType="java.lang.Integer" parameterType="com.honglu.headline.rule.config.facade.domain.BusinessParam">
+		select count(1) from
+		business_param
+		<where>
+			<!-- 参数编号  -->
+			<if test="paramValue != null and paramValue != '' ">
+				instr(param_value, #{paramValue}) > 0
+			</if>
+			<!--  参数名称 -->
+			<if test="paramName != null and paramName != '' ">
+				and instr(param_name, #{paramName}) > 0
+			</if>
+			<if test="statue != null and statue != '' ">
+				and statue = #{statue}
+			</if>
+		</where>
+	</select>
+
+	<!--删除：根据主键ID删除-->
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		DELETE FROM business_param
+		WHERE sys_param_id = #{sysParamId}
+	</delete>
+
+	<!-- 添加 -->
+	<insert id="insertSelective" parameterType="com.honglu.headline.rule.config.facade.domain.BusinessParam" useGeneratedKeys="true" keyProperty="sysParamId">
+		INSERT INTO business_param
+		(business_param_id,param_value,param_name,param_value_one,param_name_one,param_value_two,param_name_two,param_value_three,param_name_three,param_value_four,param_name_four,param_value_five,param_name_five,statue,create_time,create_man,modify_man,modify_time,version,remark)
+		VALUES
+		(#{sysParamId},#{paramValue},#{paramName},#{paramValueOne},#{paramNameOne},#{paramValueTwo},#{paramNameTwo},#{paramValueThree},#{paramNameThree},#{paramValueFour},#{paramNameFour},#{paramValueFive},#{paramNameFive},#{statue},#{createTime},#{createMan},#{modifyMan},#{modifyTime},#{version},#{remark})
+	</insert>
+
+	<!-- 修 改-->
+	<update id="updateByPrimaryKeySelective" parameterType="com.honglu.headline.rule.config.facade.domain.BusinessParam">
+		UPDATE business_param
+		<set>
+			<if test="paramValue != null">
+				param_value = #{paramValue},
+			</if>
+			<if test="paramName != null">
+				param_name = #{paramName},
+			</if>
+			<if test="paramValueOne != null">
+				param_value_one = #{paramValueOne},
+			</if>
+			<if test="paramNameOne != null">
+				param_name_one = #{paramNameOne},
+			</if>
+			<if test="paramValueTwo != null">
+				param_value_two = #{paramValueTwo},
+			</if>
+			<if test="paramNameTwo != null">
+				param_name_two = #{paramNameTwo},
+			</if>
+			<if test="paramValueThree != null">
+				param_value_three = #{paramValueThree},
+			</if>
+			<if test="paramNameThree != null">
+				param_name_three = #{paramNameThree},
+			</if>
+			<if test="paramValueFour != null">
+				param_value_four = #{paramValueFour},
+			</if>
+			<if test="paramNameFour != null">
+				param_name_four = #{paramNameFour},
+			</if>
+			<if test="paramValueFive != null">
+				param_value_five = #{paramValueFive},
+			</if>
+			<if test="paramNameFive != null">
+				param_name_five = #{paramNameFive},
+			</if>
+			<if test="statue != null">
+				statue = #{statue},
+			</if>
+			<if test="createTime != null">
+				create_time = #{createTime},
+			</if>
+			<if test="createMan != null">
+				create_man = #{createMan},
+			</if>
+			<if test="modifyMan != null">
+				modify_man = #{modifyMan},
+			</if>
+			<if test="modifyTime != null">
+				modify_time = #{modifyTime},
+			</if>
+			<if test="version != null">
+				version = #{version},
+			</if>
+			<if test="remark != null">
+				remark = #{remark},
+			</if>
+
+		</set>
+		WHERE business_param_id = #{business_param_id}
+	</update>
+
+</mapper>
