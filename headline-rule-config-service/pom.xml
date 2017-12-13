@@ -20,12 +20,12 @@
         </dependency>
         <dependency>
             <groupId>com.honglu.headline</groupId>
-            <artifactId>headline-spring-boot-starter</artifactId>
+            <artifactId>headline-common-core</artifactId>
             <version>1.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>com.honglu.headline</groupId>
-            <artifactId>headline-common-core</artifactId>
+            <artifactId>headline-spring-boot-starter-page</artifactId>
             <version>1.0.0-SNAPSHOT</version>
         </dependency>
 
