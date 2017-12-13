@@ -35,7 +35,7 @@ public class BusinessParam {
 
     public String status;
 
-    public Date creatTime;
+    public String createTime;
 
     public String createMan;
 
@@ -159,12 +159,12 @@ public class BusinessParam {
         this.status = status;
     }
 
-    public Date getCreatTime() {
-        return creatTime;
+    public String getCreateTime() {
+        return createTime;
     }
 
-    public void setCreatTime(Date creatTime) {
-        this.creatTime = creatTime;
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
     }
 
     public String getCreateMan() {
@@ -206,4 +206,5 @@ public class BusinessParam {
     public void setRemark(String remark) {
         this.remark = remark;
     }
+
 }

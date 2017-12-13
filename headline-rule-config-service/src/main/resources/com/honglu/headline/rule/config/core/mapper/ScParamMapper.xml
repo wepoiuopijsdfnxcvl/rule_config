@@ -4,7 +4,7 @@
 <mapper namespace="com.honglu.headline.rule.config.core.mapper.ScParamDao">
 
 	<resultMap type="com.honglu.headline.rule.config.facade.domain.ScParam" id="sysParaminfoMap">
-		<id property="sysParamId" column="sys_param_id" javaType="java.lang.Integer"></id>
+		<id property="scParamId" column="sys_param_id" javaType="java.lang.Integer"></id>
 		<result property="paramValue" column="param_value" javaType="java.lang.String"></result>
 		<result property="paramName" column="param_name" javaType="java.lang.String"></result>
 		<result property="paramValueOne" column="param_value_one" javaType="java.lang.String"></result>
@@ -17,7 +17,7 @@
 		<result property="paramNameFour" column="param_name_four" javaType="java.lang.String"></result>
 		<result property="paramValueFive" column="param_value_five" javaType="java.lang.String"></result>
 		<result property="paramNameFive" column="param_name_five" javaType="java.lang.String"></result>
-		<result property="statue" column="statue" javaType="java.lang.String"></result>
+		<result property="status" column="statue" javaType="java.lang.String"></result>
 		<result property="createTime" column="create_time" javaType="java.lang.String"></result>
 		<result property="createMan" column="create_man" javaType="java.lang.String"></result>
 		<result property="modifyMan" column="modify_man" javaType="java.lang.String"></result>

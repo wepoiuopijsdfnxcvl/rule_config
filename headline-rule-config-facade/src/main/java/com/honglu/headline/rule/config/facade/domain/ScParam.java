@@ -7,7 +7,7 @@ import java.util.Date;
  */
 public class ScParam {
 
-    public int sysParamId;
+    public int scParamId;
 
     public String paramValue;
 
@@ -35,7 +35,7 @@ public class ScParam {
 
     public String status;
 
-    public Date creatTime;
+    public String createTime;
 
     public String createMan;
 
@@ -49,12 +49,12 @@ public class ScParam {
 
     public String useMan;
 
-    public int getSysParamId() {
-        return sysParamId;
+    public int getScParamId() {
+        return scParamId;
     }
 
-    public void setSysParamId(int sysParamId) {
-        this.sysParamId = sysParamId;
+    public void setScParamId(int scParamId) {
+        this.scParamId = scParamId;
     }
 
     public String getParamValue() {
@@ -161,12 +161,12 @@ public class ScParam {
         this.status = status;
     }
 
-    public Date getCreatTime() {
-        return creatTime;
+    public String getCreateTime() {
+        return createTime;
     }
 
-    public void setCreatTime(Date creatTime) {
-        this.creatTime = creatTime;
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
     }
 
     public String getCreateMan() {

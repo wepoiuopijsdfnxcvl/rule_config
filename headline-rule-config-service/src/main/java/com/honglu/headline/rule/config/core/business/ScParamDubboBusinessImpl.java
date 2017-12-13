@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @Service(version = "1.0.0")
+//@org.springframework.stereotype.Service
 public class ScParamDubboBusinessImpl implements ScParamDubboBusiness {
 
         @Autowired
@@ -29,7 +30,7 @@ public class ScParamDubboBusinessImpl implements ScParamDubboBusiness {
 
             ScParam scParam = new ScParam();
             // 判断系统参数信息是否已存在 123
-            String value = redisRepository.hmget(RedisCons.RISK_SYS_PARAM_INFO, paramValue);
+            String value = redisRepository.hmget(RedisCons.HEADLINE_SYS_PARAM_INFO, paramValue);
             if (StringUtils.isNotBlank(value)) {
                 try {
                     // 转换redis中的json为参数实体
@@ -59,7 +60,7 @@ public class ScParamDubboBusinessImpl implements ScParamDubboBusiness {
             logger.error("根据参数编号查询该参数状态为无效");
             throw new RuntimeException("根据参数编号【" + paramValue + "】查询该参数状态为无效");
         }
-        redisRepository.hmset(RedisCons.RISK_SYS_PARAM_INFO, paramValue, SysParamUtils.ObjectToJson(scParam));
+        redisRepository.hmset(RedisCons.HEADLINE_SYS_PARAM_INFO, paramValue, SysParamUtils.ObjectToJson(scParam));
         return scParam;
     }
 }
