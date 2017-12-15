@@ -1,11 +1,11 @@
 package com.honglu.headline.rule.config.facade.domain;
 
-import java.util.Date;
+import java.io.Serializable;
 
 /**
  * @author panxiaokui
  */
-public class ScParam {
+public class ScParam implements Serializable{
 
     public int scParamId;
 

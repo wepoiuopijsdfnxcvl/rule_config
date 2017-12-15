@@ -1,11 +1,12 @@
 package com.honglu.headline.rule.config.facade.domain;
 
-import java.util.Date;
+import java.io.Serializable;
 
 /**
  * @author panxiaokui
  */
-public class BusinessParam {
+public class BusinessParam implements Serializable{
+
 
     public int businessParamId;
 
