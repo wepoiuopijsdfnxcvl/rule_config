@@ -43,4 +43,9 @@ public class BusinessConfigConstants {
      */
     public static final String P2C_DAILY_BONUS_PARAM = "P2C_DAILY_BONUS_PARAM";
 
+    /**
+     * 阅读分润收益比例
+     */
+    public static final String SHARE_PROFIT_PERCENT = "SHARE_PROFIT_PERCENT";
+
 }
