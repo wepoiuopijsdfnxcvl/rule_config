@@ -38,4 +38,9 @@ public class BusinessConfigConstants {
      */
     public static final String ACCOUNT_EXCHANGE_MULTIPLE = "ACCOUNT_EXCHANGE_MULTIPLE";
 
+    /**
+     * p2c,招募评分,每日奖励参数
+     */
+    public static final String P2C_DAILY_BONUS_PARAM = "P2C_DAILY_BONUS_PARAM";
+
 }
