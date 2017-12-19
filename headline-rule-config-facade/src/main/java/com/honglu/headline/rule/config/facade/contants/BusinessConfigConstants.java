@@ -48,4 +48,8 @@ public class BusinessConfigConstants {
      */
     public static final String SHARE_PROFIT_PERCENT = "SHARE_PROFIT_PERCENT";
 
+    /**
+     * 默认您头像地址
+     */
+    public static final String USER_HEADER_URL = "USER_HEADER_URL";
 }
