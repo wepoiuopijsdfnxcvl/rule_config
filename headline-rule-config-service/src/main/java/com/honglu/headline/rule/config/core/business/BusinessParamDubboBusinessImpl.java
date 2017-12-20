@@ -29,7 +29,7 @@ public class BusinessParamDubboBusinessImpl implements BusinessParamDubboBusines
     public BusinessParam getBusinessParamByParamCode(String paramCode) {
         BusinessParam businessParam = new BusinessParam();
         // 判断系统参数信息是否已存在 123
-        String value = redisRepository.hmget(RedisCons.HEADLINE_BUSINESS_PARAM_INFO, paramCode);
+        String value = redisRepository.hmget(RedisCons.RISK_BUSINESS_PARAM_INFO, paramCode);
         if (StringUtils.isNotBlank(value)) {
             try {
                 // 转换redis中的json为参数实体
@@ -59,7 +59,7 @@ public class BusinessParamDubboBusinessImpl implements BusinessParamDubboBusines
             logger.error("根据参数编号查询该参数状态为无效");
             throw new RuntimeException("根据参数编号【" + paramValue + "】查询该参数状态为无效");
         }
-        redisRepository.hmset(RedisCons.HEADLINE_BUSINESS_PARAM_INFO, paramValue, SysParamUtils.ObjectToJson(sysParam));
+        redisRepository.hmset(RedisCons.RISK_BUSINESS_PARAM_INFO, paramValue, SysParamUtils.ObjectToJson(sysParam));
         return sysParam;
     }
 }
