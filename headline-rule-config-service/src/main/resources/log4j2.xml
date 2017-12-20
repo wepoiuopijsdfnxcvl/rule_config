@@ -2,7 +2,7 @@
 <!-- Log4j 2.x 配置文件 -->
 <Configuration status="warn" strict="true" schema="Log4J-V2.2.xsd">
     <Properties>
-        <Property name="LOG_BASE_DIR">/data/ruleconfig/logs</Property>
+        <Property name="LOG_BASE_DIR">/data/ruleonfig/logs</Property>
     </Properties>
 
     <Appenders>
