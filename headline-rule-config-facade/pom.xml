@@ -6,18 +6,17 @@
         <artifactId>headline-parent</artifactId>
         <groupId>com.honglu.headline</groupId>
         <version>1.0.0.RELEASES</version>
-        <relativePath>../../headline-parent</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>headline-rule-config-facade</artifactId>
-    <version>1.0.0.RELEASES</version>
+    <version>11.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <dependencies>
         <dependency>
             <groupId>com.honglu.headline</groupId>
             <artifactId>headline-api</artifactId>
-            <version>1.0.0.RELEASES</version>
+            <version>${project.version}</version>
         </dependency>
     </dependencies>
 
