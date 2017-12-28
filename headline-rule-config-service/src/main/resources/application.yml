@@ -104,7 +104,7 @@ spring:
     application:
       name: headline-rule-config-provider
     registry:
-      address: zookeeper://101.132.91.86:2181
+      address: zookeeper://127.0.0.1:2181
     protocol:
       name: dubbo
       port: 20892
