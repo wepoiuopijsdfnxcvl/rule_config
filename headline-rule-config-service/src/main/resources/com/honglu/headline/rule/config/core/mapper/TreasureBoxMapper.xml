@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.honglu.headline.rule.config.core.mapper.TreasureBoxDao">
+
+	<resultMap id="BaseResultMap" type="com.honglu.headline.rule.config.facade.domain.ScBoxCollection" >
+		<id column="box_collection_id" property="boxCollectionId" jdbcType="VARCHAR" />
+		<result column="amount" property="amount" jdbcType="VARCHAR" />
+		<result column="efficient_time" property="efficientTime" jdbcType="BIGINT" />
+		<result column="begin_time" property="beginTime" jdbcType="TIMESTAMP" />
+		<result column="end_time" property="endTime" jdbcType="TIMESTAMP" />
+		<result column="box_order" property="boxOrder" jdbcType="INTEGER" />
+		<result column="box_status" property="boxStatus" jdbcType="INTEGER" />
+		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+	</resultMap>
+
+	<!-- 通用查询结果列-->
+	<sql id="Base_Column_List" >
+		box_collection_id, amount, efficient_time, begin_time, end_time, box_order, box_status,
+		create_time, update_time
+	</sql>
+
+	<select id="queryListBy" resultType="com.honglu.headline.rule.config.facade.domain.ScBoxCollection" parameterType="map">
+    SELECT
+		<include refid="Base_Column_List" />
+  	FROM
+		sc_box_collection bo
+	WHERE
+		1=1 and bo.box_status = 0
+		<if test="beginTime!=null and beginTime!=''">
+			AND bo.begin_time &gt; #{beginTime}
+		</if>
+		<if test="endTime!=null and endTime!=''">
+			AND bo.end_time &lt; #{endTime}
+		</if>
+		ORDER BY bo.box_order ASC
+	</select>
+
+
+</mapper>

@@ -6,8 +6,8 @@
 	<!--查询翻倍红包-->
 	<select id="queryAllRedLevel" resultType="com.honglu.headline.rule.config.facade.domain.RedLevel" parameterType="map">
 		SELECT
-		id , level_name as levelName, level_multiple as levelMultiple, level_percent as levelPercent, version, create_time as createTime, create_user as createUser,
-    create_user_name as createUserName, modifyTime, modify_user as modifyUser, modify_user_name as modifyUserName
+		id , level_name AS levelName, level_multiple AS levelMultiple, level_percent AS levelPercent, VERSION, create_time AS createTime, create_user AS createUser,
+		create_user_name AS createUserName,modify_time modifyTime, modify_user AS modifyUser, modify_user_name AS modifyUserName
 		FROM sc_red_level
 	</select>
 

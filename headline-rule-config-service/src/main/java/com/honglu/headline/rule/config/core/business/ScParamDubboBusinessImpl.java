@@ -2,10 +2,10 @@ package com.honglu.headline.rule.config.core.business;
 
 import com.alibaba.dubbo.config.annotation.Service;
 import com.honglu.headline.common.core.redis.RedisRepository;
+import com.honglu.headline.common.core.util.JSONUtils;
 import com.honglu.headline.rule.config.core.mapper.ScParamDao;
 import com.honglu.headline.rule.config.core.utils.Constants;
 import com.honglu.headline.rule.config.core.utils.RedisCons;
-import com.honglu.headline.rule.config.core.utils.SysParamUtils;
 import com.honglu.headline.rule.config.facade.business.ScParamDubboBusiness;
 import com.honglu.headline.rule.config.facade.domain.ScParam;
 import org.apache.commons.lang3.StringUtils;
@@ -34,7 +34,7 @@ public class ScParamDubboBusinessImpl implements ScParamDubboBusiness {
             if (StringUtils.isNotBlank(value)) {
                 try {
                     // 转换redis中的json为参数实体
-                    scParam = (ScParam) SysParamUtils.JsonToBean(value, ScParam.class);
+                    scParam = JSONUtils.parseObject(value, ScParam.class);
                     if (Constants.STATE_FORBIDDEN.equals(scParam.getStatus())) {
                         logger.error("根据参数编号查询该参数状态为无效");
                         throw new RuntimeException("根据参数编号【" + paramValue + "】查询该参数状态为无效");
@@ -60,7 +60,7 @@ public class ScParamDubboBusinessImpl implements ScParamDubboBusiness {
             logger.error("根据参数编号查询该参数状态为无效");
             throw new RuntimeException("根据参数编号【" + paramValue + "】查询该参数状态为无效");
         }
-        redisRepository.hmset(RedisCons.HEADLINE_SYS_PARAM_INFO, paramValue, SysParamUtils.ObjectToJson(scParam));
+        redisRepository.hmset(RedisCons.HEADLINE_SYS_PARAM_INFO, paramValue, JSONUtils.toJSONString(scParam));
         return scParam;
     }
 }

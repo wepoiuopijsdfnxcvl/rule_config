@@ -34,10 +34,14 @@ public class RedisCons {
 	/** add: ken, 数据字典小类表于redis中hash的key值，包含失败 GET_RISK_DICT_SMALL_CODE **/
 	public static final String GET_RISK_DICT_SMALL_CODE_STATUS = "SJZD:GET_ALL_DICT_SMALL_CODE:";
 
-	/** 业务参数配置表于redis中hash的key值 RISK_BUSINESS_PARAM_INFO **/
+	/** 业务参数配置表于redis中hash的key值  **/
 	public static final String HEADLINE_BUSINESS_PARAM_INFO = "HEADLINE_BUSINESS_PARAM_INFO";
 
 	/** 提升额度比例于redis中hash的key值 DEFAULT_PROMOTION_QUOTA **/
 	public static final String  DEFAULT_PROMOTION_QUOTA = "DEFAULT_PROMOTION_QUOTA";
+
+	/** 业务参数配置表于redis中hash的key值 RISK_BUSINESS_PARAM_INFO **/
+	public static final String RISK_BUSINESS_PARAM_INFO = "RISK_BUSINESS_PARAM_INFO";
+
 
 }

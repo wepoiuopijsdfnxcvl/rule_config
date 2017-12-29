@@ -4,7 +4,7 @@
 <mapper namespace="com.honglu.headline.rule.config.core.mapper.BuVideoPkActivityDao">
 
 	<!--查询翻倍红包-->
-	<select id="queryAllAvlidRead" resultType="com.honglu.headline.rule.config.facade.domain.BuVideoPkActivity" parameterType="map">
+	<select id="queryAllBuVideoPk" resultType="com.honglu.headline.rule.config.facade.domain.BuVideoPkActivity" parameterType="map">
 
 
     SELECT
